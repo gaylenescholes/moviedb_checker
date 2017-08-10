@@ -1,0 +1,6 @@
+TheMovieDB website has a set of documents describing its functionality.
+Included in this is the page: https://developers.themoviedb.org/3/getting-started/search-and-query-for-details
+
+This page will be the basis for the test plan and cases for this exercise.
+
+
