@@ -1,0 +1,43 @@
+TheMovieDB website has a set of documents describing its functionality.
+Included in this is the page: https://developers.themoviedb.org/3/getting-started/search-and-query-for-details
+This page will be the basis for the test plan and cases for this exercise.
+
+Individual test cases are either pseudo-coded in the appropriate class, or have been coded in place.
+Spock (a BDD language in Groovy) was used for the test cases.
+
+Areas for testing:
+1. Json : JsonFormatTest.groovy
+    - the formatted response should have all the correct fields.
+
+2. Correct Data : SearchAndQuerySpec.groovy
+    - Expected data is returned for specific calls to the API
+    - Filters work according to specification
+    - Endpoints described in the document are working
+
+3. Expected Exceptions and Error Conditions : ExceptionSpec.groovy
+    - Exceptions should be thrown for error input
+    - Status codes for error conditions and relevant information are sent
+    - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes 4xx series
+    - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes 5xx series
+
+4. Standard HTTP actions : HttpCallSpec.groovy
+    - Not all Http calls should be considered valid.
+    - Verify only the allowed Http methods return a json response
+    - These are also security tests.
+
+5. Authorization and other Preconditions : AuthorizationSpec.groovy
+    - Verify the target site is operational
+    - Verify the key entered is valid
+    - Verify an invalid key results in an error response
+
+6. Performance and Scalability : Noted for completeness
+    - These tests are NOT included.
+    - JMeter is generally used for this type of testing. Although baseline could be determined, because there
+    are no requirements for expected results on the descriptive page selected, the tests were not written for
+    this exercise.
+
+7. Manual testing:
+    - Additional tests and exploration of the API can be achieved by using a favorite application
+    - POSTMAN add-on to Chrome and the native app for windows and iOS can be used for building endpoint evaluations
+    - JMeter can be used for "ility" testing
+

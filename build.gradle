@@ -14,33 +14,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-
-/*
-* Found the following on https://dzone.com/articles/spock-and-testing-restful-api
-* Required to pass all system properties to Test tasks.
-* Not default for Gradle to pass system properties through to forked processes.
-*/
-tasks.withType(Test) {
-    def config = new ConfigSlurper().parse(new File('src/test/resources/SpockConfig.groovy').toURL())
-
-    systemProperty 'env', System.getProperty('env', config.envHost)
-    systemProperty 'key', System.getProperty('apiKey', config.apiKey)
+test {
+    systemProperty("apiKey", project.getProperty("apiKey"))
 }
-/**
- * End of copied code
- */
-
-// require use input their own authentication key
-def api_key
-task askForAuthKey << {
-    def console = System.console()
-    if (console) {
-        api_key = console.readLine("Enter your authorization key to proceed. ")
-    }
-    else {
-        logger.error "Cannot get console."
-    }
-}
-
-
 
